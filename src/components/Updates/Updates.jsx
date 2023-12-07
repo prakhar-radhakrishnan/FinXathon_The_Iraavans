@@ -72,7 +72,7 @@ const Updates = () => {
     const question = `Given Company Size: ${companySize}, Sustainability Score: ${sustainabilityScore}, Green Investments: ${greenInvestments}. What are the sustainable growth methods for the future?`;
 
     // Replace YOUR_API_KEY with your actual OpenAI API key
-    const apiKey = "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";
+    const apiKey = "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";
 
 
 
@@ -116,7 +116,7 @@ const Updates = () => {
     const question = `Major Highlight: ${newsletterHighlights}, Challenges: ${newsletterChallenges}, Growth this Month: ${newsletterGrowth}. Generate a newsletter for the organization in very crisp short`;
 
     // Replace YOUR_API_KEY with your actual OpenAI API key
-    const apiKey = "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";
+    const apiKey = "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";
 
     // Construct the OpenAI API request
     const requestOptions = {

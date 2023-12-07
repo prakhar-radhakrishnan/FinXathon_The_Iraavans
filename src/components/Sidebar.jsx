@@ -33,7 +33,7 @@ const Sidebar = () => {
       <div className="logo">
         {/* <img src={Logo} alt="logo" /> */}
         <span>
-        Q2 <span>  Sustainability   </span><br></br>Partner
+        <span>  Green </span> Space
         </span>
       </div>
 

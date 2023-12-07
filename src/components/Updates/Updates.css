@@ -35,7 +35,8 @@
 .Updates {
     /* display: flex;
     gap: 20px; */
-    background-color: #1B203D;
+    background: rgb(230,239,211);
+    background: linear-gradient(90deg, rgba(230,239,211,1) 0%, rgba(212,233,202,1) 0%, rgba(213,243,219,1) 100%);;
     padding: 30px 10px 10px 10px ;
     width: 85%;
     border-radius: 0.7rem;
@@ -49,7 +50,7 @@
     font-size: 16px;
     cursor: pointer;
     /* background-color: red; */
-    background: #F57D9A;
+    background: black;
 
     border: none;
     color: white;
@@ -128,5 +129,5 @@
     color: white;
   }
   .ai-msg{
-    color: white;
+    color: #52575D;
   }

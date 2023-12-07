@@ -117,6 +117,11 @@ function ExpandedCard({ param, setExpanded }) {
         <UilTimes onClick={setExpanded} />
       </div>
         <span>{param.title}</span>
+         {/* Added link */}
+      <a href="/api.html" target="_blank" rel="noopener noreferrer">
+        Simple Link
+      </a>
+
       <div className="chartContainer">
         <Chart options={data.options} series={param.series} type="area" />
       </div>

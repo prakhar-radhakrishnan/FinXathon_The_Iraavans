@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transaction Details</title>
+  <link rel="stylesheet" href="api.css">
+  <style>
+    #sustainabilityScore {
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>API Response</h2>
+    <div id="responseContainer">
+      <h3>API Response:</h3>
+      <div id="apiResponse"></div>
+      <div id="sustainabilityScore">Sustainability Score: <span id="scoreValue"></span></div>
+    </div>
+  </div>
+
+  <script>
+    function calculateSustainabilityScore(emissionsSum) {
+      // Define the ranges and their corresponding scores
+      const ranges = [
+    { min: 0, max: 5, score: 100 },
+    { min: 6, max: 10, score: 95},
+    { min: 11, max: 15, score: 90 },
+    { min: 16, max: 20, score: 85 },
+    { min: 21, max: 25, score: 80},
+    { min: 26, max: 30, score: 75},
+    { min: 31, max: 35, score: 70},
+    { min: 36, max: 40, score: 65},
+    { min: 41, max: 45, score: 60},
+    { min: 46, max: 50, score: 55},
+    { min: 51, max: 55, score: 50},
+    { min: 56, max: 60, score: 45},
+    { min: 61, max: 65, score: 40},
+    { min: 66, max: 70, score: 35},
+    { min: 71, max: 75, score: 30},
+    { min: 76, max: 80, score: 25},
+    { min: 81, max: 85, score: 20},
+    { min: 86, max: 90, score: 15},
+    { min: 91, max: 95, score: 10},
+    { min: 96, max: 100, score: 5},
+    { min: 101, max: Infinity, score: 0},
+    
+        
+      ];
+
+      
+      for (const range of ranges) {
+        if (emissionsSum >= range.min && emissionsSum <= range.max) {
+          return range.score;
+        }
+      }
+
+      return 0; // Return default score if no range matches
+    }
+
+    const apiUrl = 'https://api.connect.earth/transaction';
+    const apiKey = 'c3f00b9317bdf22345c947f6361748fef18588c59dd9bb3b7d0afe3264d3f734a4add898b530dcdad6442013b650fdc939d34817c11e8abe4f0a2b82f8caecfb';
+
+    const examples = [
+      { currencyISO: 'USD', price: 48, mcc: '5411' },
+      { currencyISO: 'USD', price: 1, mcc: '5411' },
+      { currencyISO: 'USD', price: 6, mcc: '5411' },
+      { currencyISO: 'USD', price: 8, mcc: '5411' },
+      { currencyISO: 'USD', price: 5, mcc: '5411' }
+     
+    ];
+
+    Promise.all(
+      examples.map(example =>
+        fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'x-api-key': apiKey,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(example)
+        }).then(response => response.json())
+      )
+    )
+    .then(responses => {
+      const sumEmissions = responses.reduce((sum, response) => sum + response.kg_of_CO2e_emissions, 0);
+
+      const similarTo = responses.flatMap(response => response.similar_to);
+
+      const similarToCounts = similarTo.reduce((acc, item) => {
+        acc[item] = (acc[item] || 0) + 1;
+        return acc;
+      }, {});
+
+      const uniqueSimilarTo = Object.keys(similarToCounts);
+
+      displayResponse(sumEmissions, uniqueSimilarTo);
+      displaySustainabilityScore(sumEmissions);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+ 
+    });
+
+    function displayResponse(sumEmissions, similarTo) {
+      const responseContainer = document.getElementById('responseContainer');
+      const apiResponse = document.getElementById('apiResponse');
+
+      const formattedResponse = `
+        <p><strong>kg of CO2e Emissions (Sum):</strong> ${sumEmissions}</p>
+        <p><strong>Similar To:</strong></p>
+        <ul>
+          ${similarTo.map(similar => `<li>${similar}</li>`).join('')}
+        </ul>
+      `;
+
+      apiResponse.innerHTML = formattedResponse;
+      responseContainer.style.display = 'block';
+    }
+
+    function displaySustainabilityScore(emissionsSum) {
+      const sustainabilityScore = calculateSustainabilityScore(emissionsSum);
+      const scoreValue = document.getElementById('scoreValue');
+      scoreValue.textContent = sustainabilityScore;
+    }
+  </script>
+</body>
+</html>

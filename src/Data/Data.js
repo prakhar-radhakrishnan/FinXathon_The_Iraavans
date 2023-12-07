@@ -46,7 +46,7 @@ export const cardsData = [
   {
     title: "RTA",
     color: {
-      backGround: "#1B203D",
+      backGround: "#8BB6A2",
       // boxShadow: "0px 10px 20px 0px #e0c6f5",
     },
     barValue: 70,
@@ -63,11 +63,11 @@ export const cardsData = [
   {
   title: "PSS",
     color: {
-      backGround: "#1B203D",
+      backGround: "#8BB6A2",
       // boxShadow: "0px 10px 20px 0px #e0c6f5",
     },
-    barValue: 70,
-    value: "25,970",
+    barValue: 90,
+    value: "90",
     png: UilUsdSquare,
     fullform: "Portfolio Sustainability Score",
     series: [
@@ -80,7 +80,7 @@ export const cardsData = [
   {
     title: "SAO",
     color: {
-      backGround: "#1B203D",
+      backGround: "#FE7E51",
       boxShadow: "0px 10px 20px 0px #FDC0C7",
     },
     barValue: 80,
@@ -98,7 +98,7 @@ export const cardsData = [
     title: "CFS",
     color: {
       backGround:
-        "#1B203D",
+        "#101322",
       // boxShadow: "0px 10px 20px 0px #F9D59B",
     },
     barValue: 60,
@@ -116,7 +116,7 @@ export const cardsData = [
     title: "RFS",
     color: {
       backGround:
-        "#1B203D",
+        "#8BB6A2",
       // boxShadow: "0px 10px 20px 0px #F9D59B",
     },
     barValue: 60,
@@ -134,7 +134,7 @@ export const cardsData = [
     title: "CEFC",
     color: {
       backGround:
-        "#1B203D",
+        "#EF4464",
       // boxShadow: "0px 10px 20px 0px #F9D59B",
     },
     barValue: 60,

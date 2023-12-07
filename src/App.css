@@ -14,7 +14,7 @@
 .App {
   /* padding: 0.5rem 3.5rem; */
   color: var(--black);
-  background: #1B203D;
+  background: #636D79;
  
   height: 120vh;
   display: flex;
@@ -27,7 +27,7 @@
   display: grid;
   height: 97%;
   width: 97%;
-  background: var(--glass);
+  background: #F2F2F2;
   border-radius: 2rem;
   gap: 16px;
   grid-template-columns: 11rem auto 20rem;

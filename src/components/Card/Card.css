@@ -21,12 +21,12 @@
   gap: 1rem;
 }
 .CircularProgressbar {
-  width: 4rem !important;
+  width: 4.1rem !important;
   overflow: visible;
 }
 .CircularProgressbar-path {
-  stroke: #9E4B62 !important;
-  stroke-width: 3px !important;
+  stroke: #F9F4F0!important;
+  stroke-width: 8px !important;
   /* filter: drop-shadow(2px 4px 6px white); */
 }
 .CircularProgressbar-trail {
